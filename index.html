@@ -5,152 +5,221 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Domenet er til salgs</title>
   <meta name="description" content="Dette domenet er til salgs! Ta kontakt på vegs1o6@gmail.com">
-  <meta name="theme-color" content="#0f0c29">
+  <meta name="theme-color" content="#e3e8ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#262b35" media="(prefers-color-scheme: dark)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f0c29;
-      --ink: #fdf7f2;
-      --muted: rgba(253, 247, 242, 0.72);
-      --coral: #ff6b6b;
-      --peach: #ffb88c;
-      --violet: #8e54e9;
-      --teal: #2bd2c6;
-      --glass: rgba(255, 255, 255, 0.07);
-      --glass-border: rgba(255, 255, 255, 0.16);
+      --bg: #e3e8ef;
+      --surface-top: #eaeef4;
+      --surface-bottom: #dce2ea;
+      --light: rgba(255, 255, 255, 0.9);
+      --dark: rgba(163, 177, 198, 0.75);
+      --ink: #2c3a55;
+      --muted: #6b7a93;
+      --accent: #4f6bed;
+      --accent-deep: #3b54cc;
+      --accent-ink: #ffffff;
+      --live: #22c07a;
+
+      --raise: 9px 9px 18px var(--dark), -9px -9px 18px var(--light);
+      --raise-lg: 20px 20px 44px var(--dark), -20px -20px 44px var(--light);
+      --raise-sm: 5px 5px 10px var(--dark), -5px -5px 10px var(--light);
+      --inset: inset 6px 6px 12px var(--dark), inset -6px -6px 12px var(--light);
+      --inset-sm: inset 3px 3px 6px var(--dark), inset -3px -3px 6px var(--light);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #262b35;
+        --surface-top: #2b313c;
+        --surface-bottom: #22272f;
+        --light: rgba(58, 66, 81, 0.85);
+        --dark: rgba(12, 14, 19, 0.7);
+        --ink: #e4e9f2;
+        --muted: #98a3b8;
+        --accent: #7088ff;
+        --accent-deep: #566ff0;
+        --accent-ink: #0f1422;
+      }
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body { height: 100%; }
+    html, body { min-height: 100%; }
 
     body {
-      font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+      font-family: "Manrope", system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--ink);
       display: grid;
       place-items: center;
       min-height: 100svh;
-      padding: 24px 16px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Animated aurora blobs */
-    .blob {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0.55;
-      z-index: 0;
-      animation: float 18s ease-in-out infinite alternate;
-    }
-    .blob.one   { width: 48vmax; height: 48vmax; background: var(--violet); top: -18vmax; left: -14vmax; }
-    .blob.two   { width: 40vmax; height: 40vmax; background: var(--coral);  bottom: -16vmax; right: -12vmax; animation-delay: -6s; }
-    .blob.three { width: 28vmax; height: 28vmax; background: var(--teal);   top: 55%; left: 8%; opacity: 0.35; animation-delay: -12s; }
-
-    @keyframes float {
-      0%   { transform: translate(0, 0) scale(1); }
-      50%  { transform: translate(6vmax, 4vmax) scale(1.08); }
-      100% { transform: translate(-4vmax, 6vmax) scale(0.95); }
-    }
-
-    /* Subtle grain overlay */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      opacity: 0.08;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      padding: 32px 16px;
+      -webkit-font-smoothing: antialiased;
     }
 
     main {
-      position: relative;
-      z-index: 2;
-      width: min(760px, 100%);
+      width: min(560px, 100%);
+      padding: clamp(32px, 7vw, 56px) clamp(22px, 6vw, 52px);
+      border-radius: 40px;
+      background: linear-gradient(145deg, var(--surface-top), var(--surface-bottom));
+      box-shadow: var(--raise-lg);
       text-align: center;
-      padding: clamp(40px, 8vw, 80px) clamp(24px, 6vw, 64px);
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 32px;
-      backdrop-filter: blur(24px) saturate(140%);
-      -webkit-backdrop-filter: blur(24px) saturate(140%);
-      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.5);
-      animation: rise 0.9s cubic-bezier(.2,.8,.2,1) both;
+      animation: rise 0.8s cubic-bezier(.2,.8,.2,1) both;
     }
 
     @keyframes rise {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    h1 {
-      font-size: clamp(2.4rem, 7vw, 4.6rem);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.035em;
-      background: linear-gradient(100deg, var(--ink) 0%, var(--peach) 45%, var(--coral) 75%, var(--violet) 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: shimmer 8s linear infinite;
-      text-wrap: balance;
-    }
-
-    @keyframes shimmer {
-      to { background-position: 200% center; }
-    }
-
-    p {
-      margin-top: clamp(20px, 3vw, 32px);
-      font-size: clamp(1.05rem, 2.4vw, 1.35rem);
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .email {
-      display: inline-block;
-      margin-top: 6px;
-      padding: 12px 26px;
+    /* Status pill – inset groove with a glowing LED */
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 18px;
       border-radius: 999px;
-      font-weight: 500;
-      color: #1a1033;
+      box-shadow: var(--inset-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .led {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #b8ffd9, var(--live) 60%);
+      box-shadow: 0 0 0 2px var(--bg), 0 0 10px 1px rgba(34, 192, 122, 0.65);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      50% { box-shadow: 0 0 0 2px var(--bg), 0 0 16px 3px rgba(34, 192, 122, 0.35); }
+    }
+
+    /* Raised dial holding a price-tag icon */
+    .emblem {
+      width: 112px;
+      height: 112px;
+      margin: 32px auto 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, var(--surface-top), var(--surface-bottom));
+      box-shadow: var(--raise);
+    }
+
+    .emblem-inner {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--inset);
+      color: var(--accent);
+    }
+
+    .emblem svg { width: 36px; height: 36px; }
+
+    h1 {
+      font-size: clamp(2rem, 6.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
+      text-shadow: 1px 1px 1px var(--light);
+    }
+
+    .lead {
+      margin-top: 14px;
+      font-size: clamp(1rem, 2.4vw, 1.1rem);
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* Inset "slot" holding the address like an engraved plate */
+    .contact {
+      margin-top: 32px;
+      padding: 10px;
+      border-radius: 28px;
+      box-shadow: var(--inset);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 56px;
+      padding: 14px 22px;
+      border-radius: 20px;
+      font: inherit;
+      font-weight: 600;
       text-decoration: none;
-      background: linear-gradient(120deg, var(--peach), var(--coral));
-      box-shadow: 0 10px 30px -8px rgba(255, 107, 107, 0.6);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      word-break: break-all;
+      transition: box-shadow 0.2s ease, transform 0.2s ease, color 0.2s ease;
+      word-break: break-word;
     }
 
-    .email:hover, .email:focus-visible {
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: 0 16px 40px -8px rgba(255, 107, 107, 0.8);
-      outline: none;
+    .btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    .btn-primary {
+      color: var(--accent-ink);
+      background: linear-gradient(145deg, var(--accent), var(--accent-deep));
+      box-shadow: 6px 6px 14px var(--dark), -6px -6px 14px var(--light),
+                  inset 1px 1px 1px rgba(255, 255, 255, 0.35);
     }
 
-    .extra {
-      margin-top: clamp(28px, 4vw, 40px);
-      font-size: clamp(0.95rem, 2vw, 1.05rem);
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.25),
+                  inset -3px -3px 8px rgba(255, 255, 255, 0.15);
     }
 
-    .extra a {
-      color: var(--teal);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(43, 210, 198, 0.4);
-      padding-bottom: 2px;
-      transition: color 0.25s ease, border-color 0.25s ease;
-    }
-
-    .extra a:hover, .extra a:focus-visible {
+    .btn-secondary {
+      margin-top: 26px;
       color: var(--ink);
-      border-color: var(--ink);
-      outline: none;
+      background: linear-gradient(145deg, var(--surface-top), var(--surface-bottom));
+      box-shadow: var(--raise-sm);
     }
+
+    .btn-secondary .arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--inset-sm);
+      flex-shrink: 0;
+      color: var(--accent);
+      transition: transform 0.2s ease;
+    }
+
+    .btn-secondary .arrow svg { width: 16px; height: 16px; }
+
+    .btn-secondary:hover { color: var(--accent); }
+    .btn-secondary:hover .arrow { transform: translateX(3px); }
+
+    .btn-secondary:active {
+      box-shadow: var(--inset-sm);
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -158,14 +227,39 @@
   </style>
 </head>
 <body>
-  <div class="blob one" aria-hidden="true"></div>
-  <div class="blob two" aria-hidden="true"></div>
-  <div class="blob three" aria-hidden="true"></div>
-
   <main>
+    <span class="status"><span class="led" aria-hidden="true"></span>Tilgjengelig</span>
+
+    <div class="emblem" aria-hidden="true">
+      <div class="emblem-inner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/>
+          <circle cx="7.5" cy="7.5" r="1.5" fill="currentColor"/>
+        </svg>
+      </div>
+    </div>
+
     <h1>Dette domenet er til salgs!</h1>
-    <p>Ta kontakt på<br><a class="email" href="mailto:vegs1o6@gmail.com">vegs1o6@gmail.com</a></p>
-    <p class="extra"><a href="https://seiltips.no" target="_blank" rel="noopener">Sjekk ut en agentdrevet nettside her &rarr;</a></p>
+    <p class="lead">Interessert? Send en e-post, så tar vi en prat om pris og overføring.</p>
+
+    <div class="contact">
+      <a class="btn btn-primary" href="mailto:vegs1o6@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2.5"/>
+          <path d="m3.5 6.5 8.5 6.5 8.5-6.5"/>
+        </svg>
+        vegs1o6@gmail.com
+      </a>
+    </div>
+
+    <a class="btn btn-secondary" href="https://seiltips.no" target="_blank" rel="noopener">
+      Sjekk ut en agentdrevet nettside her
+      <span class="arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M13 6l6 6-6 6"/>
+        </svg>
+      </span>
+    </a>
   </main>
 </body>
 </html>
