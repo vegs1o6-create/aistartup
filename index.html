@@ -113,7 +113,7 @@
       line-height: 1.6;
     }
 
-    a {
+    .email {
       display: inline-block;
       margin-top: 6px;
       padding: 12px 26px;
@@ -127,9 +127,28 @@
       word-break: break-all;
     }
 
-    a:hover, a:focus-visible {
+    .email:hover, .email:focus-visible {
       transform: translateY(-2px) scale(1.03);
       box-shadow: 0 16px 40px -8px rgba(255, 107, 107, 0.8);
+      outline: none;
+    }
+
+    .extra {
+      margin-top: clamp(28px, 4vw, 40px);
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+    }
+
+    .extra a {
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(43, 210, 198, 0.4);
+      padding-bottom: 2px;
+      transition: color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .extra a:hover, .extra a:focus-visible {
+      color: var(--ink);
+      border-color: var(--ink);
       outline: none;
     }
 
@@ -145,7 +164,8 @@
 
   <main>
     <h1>Dette domenet er til salgs!</h1>
-    <p>Ta kontakt på<br><a href="mailto:vegs1o6@gmail.com">vegs1o6@gmail.com</a></p>
+    <p>Ta kontakt på<br><a class="email" href="mailto:vegs1o6@gmail.com">vegs1o6@gmail.com</a></p>
+    <p class="extra"><a href="https://seiltips.no" target="_blank" rel="noopener">Sjekk ut en agentdrevet nettside her &rarr;</a></p>
   </main>
 </body>
 </html>
