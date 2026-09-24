@@ -42,8 +42,12 @@
       z-index: 0;
       background:
         linear-gradient(20deg, rgba(20, 32, 27, 0.7) 0%, rgba(20, 32, 27, 0.35) 30%, rgba(20, 32, 27, 0) 50%),
-        url("assets/garasje.webp") 50% 92% / cover no-repeat,
+        url("assets/garasje.webp") 50% var(--img-y) / cover no-repeat,
         var(--grass);
+      /* On landscape screens the square image is 100vw tall. Keep the
+         person (~43% down the image) about 12% from the top of the window,
+         without letting the image's bottom edge lift above the window. */
+      --img-y: min(0px, max(calc(12vh - 43vw), calc(100vh - 100vw)));
     }
 
     /* Portrait screens: the lawn is too narrow to hold the text, so let the
@@ -60,8 +64,8 @@
     main {
       position: relative;
       z-index: 1;
-      width: min(520px, 100%);
-      padding: 0 clamp(24px, 5vw, 72px) clamp(40px, 7vh, 80px);
+      width: min(600px, 100%);
+      padding: 0 clamp(24px, 5vw, 72px) clamp(32px, 6vh, 64px);
       animation: fade 1.6s ease-out both;
       text-shadow: 0 1px 12px rgba(12, 20, 16, 0.55);
     }
